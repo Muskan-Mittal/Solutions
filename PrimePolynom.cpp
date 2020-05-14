@@ -8,12 +8,26 @@ using namespace std;
 #define M 1000000007
 #define pb(x) push_back(x)
 #define N 100001
-#define endl "\n"
 
-void MOD(ll &x)
+int reveal(int a, int b, int c)
 {
-    if (x >= M) x -= M;
-    if (x < 0) x += M;
+    int m=0;
+    for(m=0; m<INT_MAX; m++)
+    {
+        int val = a*m*m+b*m+c;
+        if(val<2)
+        {
+            return 0;
+        }
+        for(int j=2; j<=sqrt(val); j++)
+        {
+            if(val%j==0)
+            {
+                return m;
+            }
+        }
+    }
+    return m;
 }
 
 int main()
@@ -26,14 +40,10 @@ int main()
     cin>>t;
     while(t--)
     {
-        int n;
-        cin>>n;
-        vector<int> a(n);
-        for(int i=0; i<n; i++)
-        {
-            cin>>a[i];
-        }
-
+        int a,b,c;
+        cin>>a>>b>>c;
         
+        int m = reveal(a,b,c);
+        cout<<m<<endl;
     }
 }

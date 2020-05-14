@@ -5,29 +5,28 @@ using namespace std;
 #define F first
 #define S second
 #define ONLINE_JUDGE freopen("input","r",stdin); freopen("output","w",stdout);
-#define M 1000000007
 #define pb(x) push_back(x)
-#define N 100001
-
-ll ways(int l, int rem, int m, vector<ll> &dp)
+#define N 1001
+int M; 
+void MOD(int &x)
 {
-    if(rem<0)
-        return 0;
+    if (x >= M) x -= M;
+    //if (x < 0) x += M;
+}
 
-    if(rem==0)
+
+int ways(int n, int m)
+{
+    int fib[n+1];
+
+    fib[0]=0; fib[1]=1;
+    fib[2]=1;
+    for(int i=3; i<=n; i++)
     {
-        return 1;
+        fib[i] = fib[i-1]+fib[i-2];
+        if(fib[i]>=m) fib[i]-=m;
     }
-
-    if(dp[rem]!=-1)
-        return dp[rem];
-
-    dp[rem]=0;
-    for(int i=1; i<=l; i+=2)
-    {
-        dp[rem] = (dp[rem]%m + ways(l, rem-i, m, dp)%m)%m;
-    }
-    return dp[rem];
+    return fib[n];
 }
 
 int main()
@@ -36,23 +35,15 @@ int main()
     
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    ll t;
-    cin>>t;
+    int t;
+    scanf("%d", &t);
     while(t--)
     {
-        int n,m;
-        ll ans;
-        cin>>n>>m;
-        int l;
-        if(n%2==1) 
-            l = n-2;
-        else
-            l = n-1;
-
-        vector<ll> dp(n+1,-1);
-
-        ans = ways(l, n, m, dp);
-
-        cout<<ans*2<<endl;
+        int n, m;
+        scanf("%d %d", &n, &m);        
+        int ans = ways(n, m)*2;
+        if(ans>=m)
+            ans-=m;
+        printf("%d\n", ans);
     }
 }

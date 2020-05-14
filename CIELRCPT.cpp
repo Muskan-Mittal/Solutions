@@ -9,31 +9,38 @@ using namespace std;
 #define pb(x) push_back(x)
 #define N 100001
 
+void MOD(ll &x)
+{
+    if (x >= M) x -= M;
+    if (x < 0) x += M;
+}
+
 int main()
 {
     ONLINE_JUDGE
     
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    vector<int> maxl(40), minl(40);
 
-    for(int i=1; i<40; i++)
+    vector<int> a(12);
+    for(int i=0; i<12; i++)
     {
-        int x = i/2;
-        minl[i] = minl[x]+minl[i-1-x]+i+1;
-        maxl[i] = i+1+maxl[i-1];
+        a[i] = pow(2,i);
     }
     int t;
     cin>>t;
     while(t--)
     {
         int n,m;
-        cin>>n>>m;
-        if(m<minl[n])   
-            cout<<-1<<endl;
-        else if(m<=maxl[n])
-            cout<<0<<endl;
-        else
-            cout<<m-maxl[n]<<endl;
+        cin>>n;
+        m=12;
+        
+        for(int i=11; i>=0; i++)
+        {
+            if(n>a[i])
+            {
+                
+            }
+        }
     }
 }

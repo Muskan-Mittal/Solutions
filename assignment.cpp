@@ -16,24 +16,20 @@ void MOD(ll &x)
     if (x < 0) x += M;
 }
 
+ll func(ll a, ll x)
+{
+    ll m=32;
+    ll y=x%m;
+    ll val = (((y*y)%m + (((y*y)%m)*y)%m)*a)%m;
+    return val;
+}
+
 int main()
 {
     ONLINE_JUDGE
     
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int t;
-    cin>>t;
-    while(t--)
-    {
-        int n;
-        cin>>n;
-        vector<int> a(n);
-        for(int i=0; i<n; i++)
-        {
-            cin>>a[i];
-        }
-
-        
-    }
+    for(ll i=1; i<=3; i++)
+        cout<<func(i,3200)<<endl;
 }

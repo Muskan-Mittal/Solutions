@@ -26,14 +26,29 @@ int main()
     cin>>t;
     while(t--)
     {
-        int n;
-        cin>>n;
+        int n,k;
+        cin>>n>>k;
+        ll sum=0;
         vector<int> a(n);
+
         for(int i=0; i<n; i++)
         {
             cin>>a[i];
+            sum+=a[i];
         }
 
-        
+        sort(a.begin(),a.end());
+
+        if(k>n/2)
+            k = n-k;
+
+        ll diff=0;
+
+        for(int i=0; i<k; i++)
+        {
+            diff+=a[i];
+        }
+        diff = sum-2*diff;
+        cout<<diff<<endl;
     }
 }

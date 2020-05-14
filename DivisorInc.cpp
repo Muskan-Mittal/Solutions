@@ -8,7 +8,7 @@ using namespace std;
 #define M 1000000007
 #define pb(x) push_back(x)
 #define N 100001
-int dp[N][N];
+//int dp[N][N];
 
 void getMinSteps(int n, int m, int ops, int &ans)
 {
@@ -21,8 +21,6 @@ void getMinSteps(int n, int m, int ops, int &ans)
         return;
     }
 
-    if(dp[n][m]!=-1)
-        return dp[n][m];
     for(int i=2; i<=sqrt(n); i++)
     {
         if(n%i==0)
@@ -34,6 +32,39 @@ void getMinSteps(int n, int m, int ops, int &ans)
             }   
         }
     }
+}
+
+ll minSteps(int n, int m)
+{
+    if(n==m)
+        return 0;
+
+    vector<ll> dp(N, INT_MAX-1);
+    dp[n]=0;
+    for(int i=n; i<=m; i++)
+    {
+        if(dp[i]!=INT_MAX-1)
+            for(int j=2; j*j<=i; j++)
+            {
+                if(i%j==0)
+                {
+                    int k;
+                    k=i+j;
+                    if(k<=m)
+                        dp[k] = min(dp[k], dp[i]+1);
+                    if(i!=i/j)
+                    {
+                        k=i+i/j;
+                        if(k<=m)
+                            dp[k] = min(dp[k], dp[i]+1);
+                    } 
+                }
+            }
+    }
+
+    if(dp[m]>=INT_MAX-1)
+        return -1;
+    return dp[m];
 }
 
 int main()
@@ -48,19 +79,9 @@ int main()
     {
         int n,m;
         cin>>n>>m;
-        if(n==m)
-        {
-            cout<<0<<endl;
-            continue;
-        }
-        int ans=INT_MAX, ops=0;
 
-        for(int i=0; i<=n; i++) for(int j=0; j<=m; j++) dp[i][j] = -1;
-        getMinSteps(n,m,ops,ans);
-        if(ans==INT_MAX)
-            cout<<-1<<endl;
-        else
-            cout<<ans<<endl;
+        ll steps = minSteps(n,m);
+        cout<<steps<<endl;
     }
 }
 // 8748 84362

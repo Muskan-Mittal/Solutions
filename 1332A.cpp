@@ -7,46 +7,37 @@ using namespace std;
 #define ONLINE_JUDGE freopen("input","r",stdin); freopen("output","w",stdout);
 #define M 1000000007
 #define pb(x) push_back(x)
-#define N 1000001
-
+#define N 100001
 int main()
 {
     //ONLINE_JUDGE
     
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    
     int t;
     cin>>t;
     while(t--)
     {
-        ll n;
-        cin>>n;
+        ll a,b,c,d,x,y,x1,x2,y1,y2;
+        cin>>a>>b>>c>>d>>x>>y>>x1>>y1>>x2>>y2;
+        
+        ll posx = x+b-a, posy = y+d-c;
 
-        if(n==1 || n==2)
+        if(x==x2 && x==x1 && (a!=0 || b!=0) )
         {
-            cout<<1<<endl;
-            if(n==1)
-                cout<<"1 1\n";
-            else
-                cout<<"2 1 2\n";
+            cout<<"No\n";
             continue;
         }
 
-        cout<<n/2<<"\n";
+        if(y==y2 && y==y1 && (c!=0 || d!=0) )
+        {
+            cout<<"No\n";
+            continue;
+        }
 
-        if(n%2)
-        {
-            cout<<3<<" "<<1<<" "<<2<<" "<<n<<"\n";
-        }
+        if(posx<=x2 && posx>=x1 && posy<=y2 && posy>=y1)
+            cout<<"Yes\n";
         else
-        {
-            cout<<2<<" "<<1<<" "<<2<<"\n";
-        }
-        
-        for(int i=4; i<=n; i+=2)
-        {
-            cout<<2<<" "<<i-1<<" "<<i<<"\n";
-        }
+            cout<<"No\n";
     }
 }

@@ -22,18 +22,30 @@ int main()
     
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int t;
+    ll t;
     cin>>t;
     while(t--)
     {
-        int n;
-        cin>>n;
-        vector<int> a(n);
-        for(int i=0; i<n; i++)
+        ll n1,n2,m,ans=0;
+        cin>>n1>>n2>>m;
+
+        ll mp = m*(m+1)/2;
+        ll sub=0;
+        if(mp>=n1 && mp>=n2)
         {
-            cin>>a[i];
+            sub = min(n1,n2);
+            ans+=n1-sub+n2-sub;
+        }
+        else if(mp<n1 && mp<n2)
+        {
+            ans+=n1-mp+n2-mp;
+        }
+        else
+        {
+            sub = min(n1,n2);
+            ans+=n1-sub+n2-sub;
         }
 
-        
+        cout<<ans<<endl;
     }
 }

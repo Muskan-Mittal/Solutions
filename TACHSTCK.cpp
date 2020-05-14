@@ -8,32 +8,37 @@ using namespace std;
 #define M 1000000007
 #define pb(x) push_back(x)
 #define N 100001
-#define endl "\n"
-
-void MOD(ll &x)
-{
-    if (x >= M) x -= M;
-    if (x < 0) x += M;
-}
-
 int main()
 {
-    ONLINE_JUDGE
+    //ONLINE_JUDGE
     
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int t;
-    cin>>t;
-    while(t--)
+    int n;
+    ll d;
+    cin>>n>>d;
+    vector<ll> a(n);
+    for(int i=0; i<n; i++)
     {
-        int n;
-        cin>>n;
-        vector<int> a(n);
-        for(int i=0; i<n; i++)
-        {
-            cin>>a[i];
-        }
-
-        
+        cin>>a[i];
     }
+
+    int prs=0, i=1;
+
+    sort(a.begin(), a.end());
+
+    while(i<n)
+    {
+        if(a[i]-a[i-1]<=d)
+        {
+            prs++;
+            i+=2;
+        }
+        else
+        {
+            i++;
+        }
+    }
+
+    cout<<prs<<endl;
 }
