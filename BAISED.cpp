@@ -16,19 +16,32 @@ void MOD(ll &x)
     if (x < 0) x += M;
 }
 
-ll func(ll a, ll x)
-{
-    ll m=64;
-    ll val = (a*x)%m;
-    return val;
-}
-
 int main()
 {
-    ONLINE_JUDGE
+    //ONLINE_JUDGE
     
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    for(ll i=1; i<=2; i++)
-        cout<<func(i,2015)<<endl;
+    ll t;
+    cin>>t;
+    while(t--)
+    {
+        ll n;
+        cin>>n;
+        vector<ll> a(n);
+        for(ll i=0; i<n; i++)
+        {
+            string s;
+            cin>>s>>a[i];
+        }
+
+        sort(a.begin(), a.end());
+        ll badness = 0;
+        for(ll i=0; i<n; i++)
+        {
+            badness+=abs(a[i]-i-1);
+        }
+
+        cout << badness << endl;
+    }
 }

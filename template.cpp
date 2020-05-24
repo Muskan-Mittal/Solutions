@@ -2,6 +2,7 @@
 using namespace std;
 #define pii pair<int,int>
 #define ll long long
+#define pll pair<ll,ll>
 #define F first
 #define S second
 #define ONLINE_JUDGE freopen("input","r",stdin); freopen("output","w",stdout);

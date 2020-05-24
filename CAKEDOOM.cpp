@@ -69,33 +69,6 @@ int main()
                 cout<<"NO\n";
                 continue;
             }
-            // else
-            // {
-            //     string temp1 = "0",temp2 = "1";
-            //     bool flag = true;
-            //     for(int i=1;i<s.size();i++) 
-            //     {
-            //         temp1 += temp2[i-1];
-            //         temp2 += temp1[i-1];
-            //     }
-            //     for(int i=0;i<s.size();i++)
-            //         if(s[i] != temp1[i] && s[i]!='?')
-            //             flag = false;
-            //     if(flag)
-            //         cout<<temp1<<endl;
-            //     else 
-            //     {
-            //         flag = true;
-            //         for(int i=0;i<s.size();i++)
-            //             if(s[i] != temp2[i] && s[i]!='?')
-            //                 flag = false;
-            //         if(flag)
-            //             cout<<temp2<<endl;
-            //         else
-            //             cout<<"NO"<<endl;
-            //     }
-            // }
-            // continue;
         }
 
         bool fl = true;
