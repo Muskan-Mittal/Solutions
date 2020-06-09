@@ -2,12 +2,14 @@
 using namespace std;
 #define pii pair<int,int>
 #define ll long long
+#define pll pair<ll,ll>
 #define F first
 #define S second
 #define ONLINE_JUDGE freopen("input","r",stdin); freopen("output","w",stdout);
 #define M 1000000007
 #define pb(x) push_back(x)
 #define N 100001
+#define endl "\n"
 
 void MOD(ll &x)
 {
@@ -21,29 +23,34 @@ int main()
     
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-
-    vector<int> a(12);
-    for(int i=0; i<12; i++)
-    {
-        a[i] = pow(2,i);
-    }
-
     int t;
     cin>>t;
     while(t--)
     {
-        int n,m=12;
+        int n;
         cin>>n;
-        ll tot=0;
-        for(int i=11; i>=0; i--)
+        ll k=1;
+        for(int i=0; i<n; i++)
         {
-            while(n>=a[i])
+            if(i%2==0)
             {
-                n-=a[i];
-                tot++;
+                for(int j=0; j<n; j++)
+                {
+                    cout<<k++<<" ";
+                }
             }
+            else
+            {
+                k+=n-1;
+                for(int j=0; j<n; j++)
+                {
+                    cout<<k--<<" ";
+                }
+                k+=n+1;
+            }    
+            cout<<endl;
         }
 
-        cout<<tot<<endl;
+        
     }
 }
